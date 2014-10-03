@@ -15,7 +15,10 @@ gem 'devise'
 gem 'puma'
 gem 'pundit'
 gem 'simple_form'
+gem 'aws-sdk-core', '~> 2.0'
+gem 'figaro'
 group :development do
+  gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'guard-bundler'
