@@ -1,18 +1,17 @@
-<h1>Listing instances</h1>
+<h1>Instances</h1>
 
-<table>
+<table id="instances">
   <thead>
     <tr>
-      <th colspan="1">Name</th>
-      <th colspan="1">Id</th>
-      <th colspan="1">Type</th>
-      <th colspan="1">State</th>
-      <th colspan="1">AZ</th>
-      <th colspan="1">Public IP</th>
-      <th coslpan="1">Private IP</th>
+      <th>Name</th>
+      <th>Id</th>
+      <th>Type</th>
+      <th>State</th>
+      <th>AZ</th>
+      <th>Public IP</th>
+      <th>Private IP</th>
     </tr>
   </thead>
-
   <tbody>
     <% @instances.each do |instance| %>
       <tr>
