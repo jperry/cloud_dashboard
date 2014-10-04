@@ -1,6 +1,6 @@
 <h1>Instances</h1>
 
-<table id="instances">
+<table id="instances" data-source="<%= instances_url(format: "json") %>">
   <thead>
     <tr>
       <th>Name</th>
@@ -13,17 +13,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @instances.each do |instance| %>
-      <tr>
-        <td><%= instance[:name] %></td>
-        <td><%= instance[:id] %></td>
-        <td><%= instance[:type] %></td>
-        <td><%= instance[:state] %></td>
-        <td><%= instance[:availability_zone] %></td>
-        <td><%= instance[:public_ip] %></td>
-        <td><%= instance[:private_ip] %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
