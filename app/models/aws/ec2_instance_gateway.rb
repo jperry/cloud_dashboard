@@ -6,13 +6,22 @@ module AWS
     end
 
     def instances(options={})
-      instances = []
-      @client.describe_instances(options).reservations.each do |r|
-        r.instances.each do |i|
-          instances << i
+      @client.describe_instances(options).reservations.map do |r|
+        instance = r.instances[0]
+        name = ""
+        instance.tags.each do |t|
+          name = t.value if t.key == 'Name'
         end
+        {
+          name: name,
+          id: instance.instance_id,
+          type: instance.instance_type,
+          state: instance.state.name,
+          availability_zone: instance.placement.availability_zone,
+          public_ip: instance.public_ip_address,
+          private_ip: instance.private_ip_address
+        }
       end
-      instances
     end
   end
 end
