@@ -19,8 +19,8 @@ module AWS
           type: instance.instance_type,
           state: instance.state.name,
           availability_zone: instance.placement.availability_zone,
-          public_ip: instance.public_ip_address,
-          private_ip: instance.private_ip_address
+          public_ip: instance.public_ip_address || '',
+          private_ip: instance.private_ip_address || ''
         }
       end
     end

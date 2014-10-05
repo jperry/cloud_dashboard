@@ -54,7 +54,12 @@ class InstancesDatatable
 
   def fetch_instances
     instances = filtered_results
-    instances = instances.sort_by { |i| i[sort_column] }
+    instances = case sort_column
+                when :public_ip, :private_ip
+                  instances.sort_by { |i| i[sort_column].split(".").map(&:to_i) }
+                else
+                  instances.sort_by { |i| i[sort_column] }
+                end
     instances.reverse! if sort_direction == 'desc'
     instances = instances.paginate(page: page, per_page: per_page)
     instances
