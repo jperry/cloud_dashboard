@@ -2,8 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-  $('#instances').dataTable
+  oTable = $('#instances').dataTable
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#instances').data('source')
+  oTable.fnSetFilteringDelay()
+
 

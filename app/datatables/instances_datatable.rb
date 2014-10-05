@@ -1,6 +1,8 @@
 class InstancesDatatable
   delegate :params, to: :@view
 
+  attr_reader :view
+
   def initialize(view)
     @view = view
   end
@@ -8,8 +10,8 @@ class InstancesDatatable
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
-      iTotalRecords: Instance.size,
-      iTotalDisplayRecords: Instance.size,
+      iTotalRecords: all_instances.size,
+      iTotalDisplayRecords: filtered_results.size,
       aaData: data
     }
   end
@@ -34,14 +36,27 @@ class InstancesDatatable
     @instances ||= fetch_instances
   end
 
+  def all_instances
+    @all_instances ||= Instance.new.all
+  end
+
+  def filtered_results
+    @filtered_results ||= begin
+      if params[:sSearch].present?
+        all_instances.find_all do |i|
+          i.values.detect { |v| /#{params[:sSearch]}/.match(v) }
+        end
+      else
+        all_instances
+      end
+    end
+  end
+
   def fetch_instances
-    instances = Instance.new.all.sort_by { |i| i[sort_column] }
+    instances = filtered_results
+    instances = instances.sort_by { |i| i[sort_column] }
     instances.reverse! if sort_direction == 'desc'
-    # products = Product.order("#{sort_column} #{sort_direction}")
     instances = instances.paginate(page: page, per_page: per_page)
-    # if params[:sSearch].present?
-    #   products = products.where("name like :search or category like :search", search: "%#{params[:sSearch]}%")
-    # end
     instances
   end
 

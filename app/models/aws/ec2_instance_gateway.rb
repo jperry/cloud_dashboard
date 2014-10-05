@@ -1,11 +1,12 @@
 module AWS
   class Ec2InstanceGateway
 
-    def initialize(opts={})
-      @client = opts.fetch(:client) { Aws::EC2::Client.new }
+    def initialize(options={})
+      @client = options.fetch(:client) { Aws::EC2::Client.new }
     end
 
     def instances(options={})
+      options = default_options.merge(options)
       @client.describe_instances(options).reservations.map do |r|
         instance = r.instances[0]
         name = ""
@@ -22,6 +23,17 @@ module AWS
           private_ip: instance.private_ip_address
         }
       end
+    end
+
+    def default_options
+      {
+        filters: [
+                   {
+                     name: 'instance-state-name',
+                     values: %w(pending running shutting-down stopping stopped)
+                   }
+                 ]
+      }
     end
   end
 end
