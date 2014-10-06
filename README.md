@@ -15,13 +15,13 @@ Getting Started
     AWS_SECRET_ACCESS_KEY: 'your-secret-key-goes-here'
     AWS_REGION: 'us-east-1'
     ```
-1. Configure and seed databes
+1. Configure and seed database (Install sqlite if you don't have it via homebrew or apt)
 
     ```shell
     bundle exec rake db:migrate
     bundle exec rake db:seed
     ```
-1. Start memcached in a separate window
+1. Start memcached in a separate window (Install it if you don't have it via homebrew or apt)
 
     ```shell
     memcached
