@@ -15,6 +15,11 @@ Getting Started
     AWS_SECRET_ACCESS_KEY: 'your-secret-key-goes-here'
     AWS_REGION: 'us-east-1'
     ```
+1. Create tmp directories
+
+    ```shell
+    rake tmp:create
+    ```
 1. Configure and seed database (Install sqlite if you don't have it via homebrew or apt)
 
     ```shell
