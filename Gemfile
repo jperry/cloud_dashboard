@@ -19,6 +19,7 @@ gem 'pundit'
 gem 'simple_form'
 gem 'aws-sdk-core', '~> 2.0'
 gem 'figaro'
+gem 'dalli'
 group :development do
   gem 'pry-rails'
   gem 'better_errors'
