@@ -49,6 +49,7 @@ just stop and start memcached.
 
 Running Tests
 -------------
+1. Install [firefox](https://www.mozilla.org/en-US/firefox/new/) for acceptance tests
 1. Run all specs
 
     ```shell
