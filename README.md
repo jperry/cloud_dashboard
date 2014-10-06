@@ -18,24 +18,24 @@ Getting Started
 1. Create tmp directories
 
     ```shell
-    rake tmp:create
+    $ rake tmp:create
     ```
 1. Configure and seed database (Install sqlite if you don't have it via homebrew or apt)
 
     ```shell
-    bundle exec rake db:migrate
-    bundle exec rake db:seed
+    $ bundle exec rake db:migrate
+    $ bundle exec rake db:seed
     ```
 1. Start memcached in a separate window (Install it if you don't have it via homebrew or apt)
 
     ```shell
-    memcached
+    $ memcached
     ```
 
 1. Start rails
 
     ```shell
-    bundle exec rails s
+    $ bundle exec rails s
     ```
 
 1. Visit site http://localhost:3000
@@ -53,6 +53,6 @@ Running Tests
 1. Run all specs
 
     ```shell
-    bundle exec rake spec
+    $ bundle exec rake spec
     ```
 1. Code coverage is generated at `coverage/index.html`
