@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ec2.us-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: AWSAccessKeyId=&Action=DescribeInstances&Filter.1.Name=instance-id&Filter.1.Value.1=empty_results&Signature=%2BKLVFuBR2wxFVXrEtUJzSQ2XAxC5MhPD6yg%2BjvfLv44%3D&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2014-10-03T03%3A42%3A19Z&Version=2014-06-15
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.0.1 ruby/2.1.1 x86_64-darwin13.0
+      Content-Length:
+      - '278'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 03 Oct 2014 03:42:20 GMT
+      Server:
+      - AmazonEC2
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <DescribeInstancesResponse xmlns="http://ec2.amazonaws.com/doc/2014-06-15/">
+            <requestId>be531ffa-7019-45ef-8fc7-acced1292409</requestId>
+            <reservationSet/>
+        </DescribeInstancesResponse>
+    http_version:
+  recorded_at: Fri, 03 Oct 2014 03:42:20 GMT
+recorded_with: VCR 2.9.3
